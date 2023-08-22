@@ -3,11 +3,15 @@ import contacts from "./contacts.json";
 import React, { useState } from 'react';
 
 function App() {
-  let [count, setInit] = useState(contacts.slice(0, 5));
+  const [count, setFamous] = useState(contacts.slice(0, 5));
 
-  count.map((famous) => {
-    console.log(famous.name)
-  })
+  function deleteFamous (famousId) {
+    const filteredFamous = count.filter((famous) => {
+      console.log(famous.id, famousId)
+      return famous.id !== famousId
+    })
+    setFamous(filteredFamous);
+  }
 
   return (
     <div className="App">
@@ -18,6 +22,7 @@ function App() {
             <th>Popularity</th>
             <th>Won Oscar</th>
             <th>Won Emmy</th>
+            <th>Action</th>
           </tr>
             {
               count.map((famous) => {
@@ -30,7 +35,9 @@ function App() {
                   {!famous.wonOscar && <td></td>}
                   {famous.wonEmmy && <td>🏆</td>}
                   {!famous.wonEmmy && <td></td>}
-                </tr>)
+                  <td><button onClick={() => deleteFamous(famous.id) }>Delete</button></td>
+                </tr>
+                )
               })
             }
       </table>
