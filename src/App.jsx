@@ -58,9 +58,11 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => addRandom() }>Add Random Contact</button>
-      <button onClick={() => sortByPopularity() }>Sort by Popularity</button>
-      <button onClick={() => sortByName() }>Sort by Name</button>
+      <div className="buttonGroup">
+        <button onClick={() => addRandom() }>Add Random Contact</button>
+        <button onClick={() => sortByPopularity() }>Sort by Popularity</button>
+        <button onClick={() => sortByName() }>Sort by Name</button>
+      </div>
       <table>
           <tr>
             <th>Image</th>
@@ -74,7 +76,7 @@ function App() {
               famousArray.map((famous) => {
                 return (
                 <tr>
-                  <td><img width="30px" src={famous.pictureUrl} alt="Profile picture" /></td>
+                  <td><img src={famous.pictureUrl} alt="Profile picture" /></td>
                   <td>{famous.name}</td>
                   <td>{famous.popularity}</td>
                   {famous.wonOscar && <td>🏆</td>}
