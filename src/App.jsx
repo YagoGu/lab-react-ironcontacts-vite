@@ -13,17 +13,21 @@ function App() {
     setFamous(filteredFamous);
   }
 
-  // function addRandom () {
-  //   const moreFamous = famousArray
-  //   const newFamous = Math.floor(Math.random()*contacts.length)
-  //   const filteredFamous = moreFamous.filter((famous) => {
-  //     if(famous.id !== moreFamous[newFamous].id) {
-  //       moreFamous.push(moreFamous[newFamous])
-  //       console.log(moreFamous[newFamous].id)
-  //     }
-  //   })
-  //   setFamous(filteredFamous);
-  // }
+  function addRandom () {
+    const moreFamous = [...famousArray]
+    let newFamous;
+
+    do {
+      newFamous = contacts[Math.floor(Math.random()*contacts.length)]
+    } 
+    while (
+      famousArray.includes(newFamous)
+    )
+
+    moreFamous.push(newFamous)
+
+    setFamous(moreFamous)
+  }
 
   function sortByName() {
     const sortedNames = famousArray.sort( (a, b) => {
